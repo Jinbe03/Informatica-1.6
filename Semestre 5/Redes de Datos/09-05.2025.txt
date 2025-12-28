@@ -1,0 +1,27 @@
+Red siempre seran 1 (128+64+32+16+8+2+1)
+Host siempre sera 0
+
+255 es igual a la suma de todo
+	si es menor, se le resta el equivalente al 255
+
+192.169.100.25/24
+
+192 =1100000
+168 = 10101000
+100 = 01100100
+25 = 00011001
+
+255.255.255.0
+si son /25 (25 = bits) 
+255.255.240.0
+
+Las clases van desde
+	Clase A: 0-127		192.168.9.7/24
+	Clase B: 128-191		172.20.30.40/16
+	Clase C: 192-223		10.20.30.40/8
+
+Red de Inacap es **CLASE A**
+
+
+
+

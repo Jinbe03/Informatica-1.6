@@ -1,0 +1,224 @@
+{% extends 'api/base.html' %}
+{% block title %}Gestión de Usuarios - NUAM{% endblock %}
+
+{% block navbar_controls %}
+
+<a href="{% url 'index' %}" class="btn btn-light btn-sm me-2">Inicio</a>
+
+{% if perfil.rol == "admin" %}
+
+<a href="{% url 'admin_desbloqueo' %}" 
+    class="btn btn-warning btn-sm me-2">
+    Desbloquear usuarios
+</a>
+
+{% endif %}
+
+<form method="POST" action="{% url 'logout' %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-light btn-sm">Cerrar sesión</button>
+</form>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================
+ LISTADO DE USUARIOS
+============================== -->
+<div class="card card-body shadow-sm mb-4">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Usuarios registrados</h4>
+
+        <button class="btn btn-primary btn-sm" onclick="mostrarFormulario()">
+            + Agregar usuario
+        </button>
+    </div>
+
+    <div class="table-responsive mt-3">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th class="text-end">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.user.username }}</td>
+                    <td>{{ usuario.user.email }}</td>
+                    <td>{{ usuario.get_rol_display }}</td>
+
+                    <td class="text-end">
+
+                        <button class="btn btn-warning btn-sm"
+                            onclick="editarUsuario(
+                                '{{ usuario.id }}',
+                                '{{ usuario.user.username }}',
+                                '{{ usuario.user.email }}',
+                                '{{ usuario.rol }}'
+                            )">
+                            Editar
+                        </button>
+
+                        <form method="POST" action="{% url 'eliminar_usuario' usuario.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Eliminar este usuario?')">
+                                Eliminar
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        No hay usuarios registrados.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+
+<!-- ============================
+ FORMULARIO (AGREGAR / EDITAR)
+============================== -->
+<div id="formularioUsuario" class="card card-body shadow-sm mb-4" style="display:none;">
+
+    <h4 id="tituloFormulario">Agregar usuario</h4>
+
+    <form method="POST" id="formUsuario" action="{% url 'guardar_usuario' %}">
+        {% csrf_token %}
+        <input type="hidden" id="usuario_id" name="usuario_id">
+
+        <!-- Usuario -->
+        <div class="mb-3">
+            <label class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <!-- Contraseña (solo al crear) -->
+        <div class="mb-3" id="campoPassword">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" minlength="8">
+            <small class="text-muted">Solo obligatorio al crear</small>
+        </div>
+
+        <!-- Rol -->
+        <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <select class="form-select" id="rol" name="rol" required>
+                <option value="corredor">Corredor</option>
+                <option value="admin">Administrador</option>
+                <option value="auditor">Auditor externo</option>
+            </select>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary" onclick="ocultarFormulario()">Cancelar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- =====================================================
+     HISTORIAL DE ACTIVIDAD (AUDITORÍA)
+====================================================== -->
+<div class="col-lg-8 mx-auto">
+    <div class="card mt-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <strong>Registro de Actividad</strong>
+        </div>
+
+        <div id="auditoria-container" class="card-body p-0">
+            Cargando actividad...
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+<script>
+    {% for message in messages %}
+        Swal.fire({
+            icon: "{{ message.tags }}",
+            title: "{{ message }}",
+            confirmButtonText: "Aceptar"
+        });
+    {% endfor %}
+</script>
+{% endif %}
+
+<script>
+function mostrarFormulario() {
+    document.getElementById('formUsuario').reset();
+    document.getElementById('usuario_id').value = "";
+    document.getElementById('campoPassword').style.display = "block";
+
+    document.getElementById('tituloFormulario').textContent = "Agregar usuario";
+    document.getElementById('formularioUsuario').style.display = "block";
+    window.scrollTo(0, 0);
+}
+
+function ocultarFormulario() {
+    document.getElementById('formularioUsuario').style.display = "none";
+}
+
+function editarUsuario(id, username, email, rol) {
+    document.getElementById('usuario_id').value = id;
+    document.getElementById('username').value = username;
+    document.getElementById('email').value = email;
+    document.getElementById('rol').value = rol;
+
+    document.getElementById('campoPassword').style.display = "none";
+
+    document.getElementById('tituloFormulario').textContent = "Editar usuario";
+    document.getElementById('formularioUsuario').style.display = "block";
+
+    window.scrollTo(0, 0);
+}
+
+
+// ======================================================
+//     CARGA VIA AJAX DEL HISTORIAL DE AUDITORIA
+// ======================================================
+function cargarAuditoria() {
+    fetch("{% url 'auditoria_fragment' %}")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("auditoria-container").innerHTML = data.html;
+        });
+}
+
+cargarAuditoria();               
+setInterval(cargarAuditoria, 5000);
+</script>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+    <table class="table table-sm table-hover mb-0">
+    <thead class="table-light">
+        <tr>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for log in auditorias %}
+        <tr>
+            <td>{{ log.user.username }}</td>
+            <td>{{ log.accion }}</td>
+            <td>{{ log.fecha|date:"d/m/Y H:i:s" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center text-muted">
+                No hay actividad registrada.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

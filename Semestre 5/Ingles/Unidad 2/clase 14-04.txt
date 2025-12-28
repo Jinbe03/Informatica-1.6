@@ -1,0 +1,58 @@
+Held-wanted-gave-was-had-bought
+
+1bought
+2held
+3gave
+4had
+5wanted
+6was
+/////////////////////////////////////////////////////
+A: Donde estuvo y que hizo
+Hello, how are you-
+*how was your weekend?
+	My weekend was nice
+
+*did you watch movies?
+	Yes, I watch a lot of movies
+
+Really?
+*did you stay at home?
+	Yes, I stayed at my home playing videogames
+
+////////////////////////////////////////////////////////////
+B: Como esta el clime y que actividades realizo
+
+And well-
+*what was the weather like in your last weekend?
+	The weather was sunny
+
+yes, it was hot
+*what did you do last weekend?
+	I visited my family
+
+*was it fun?
+	No, no really :
+
+////////////////////////////////////////////////////////////
+
+
+*how was your weekend?
+*did you watch movies?
+*did you stay at home?
+*was it fun?
+*what was the weather like?
+*what did you do last weekend?
+*did you work on study?
+*when here did you go?
+
+I visited my family
+My weekend was nice/cool/great/ok
+Yes, I stayed at my home/ No, I didn't stay at home
+I worked
+Yes, I did/no i didn't
+Yes, it was a fun/nice/cool weekend
+I played videogames
+I studied
+I went to party
+I went to the park/mall/movies
+The weather was sunny and warm

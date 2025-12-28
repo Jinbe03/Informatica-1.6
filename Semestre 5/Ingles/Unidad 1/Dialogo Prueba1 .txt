@@ -1,0 +1,45 @@
+
+////////////////////////////////////////////////////////////////////
+Sección 1: Información Personal
+						
+	My name is Bruno Rojas.				
+	I am a informatic ingenier student.			
+	I am 23 years old.					
+							
+Sección 2: Rutinas Diarias y Actividades de Tiempo Libre
+
+Rutina:
+	1. I usually wake up late
+	2. I often spend time with my family
+	3. I'm sometimes watch TV
+
+On Free time:
+	1. I always go out with friends 
+	2. I usually do my homework
+	3. I always play with my cats
+
+////////////////////////////////////////////////////////////////////
+Datos Profe 1:
+	he is a teacher
+	hes name is Gabriela Lara Galez
+	his addres is santiago sentro
+	his birthday 11 may
+
+Frecuency	
+	he always get up early
+	always go to work
+	and usually cook
+Free time
+	he's like to sew
+	likes to rea
+	and walk with his pet
+
+////////////////////////////////////////////////////////////////////
+Datos profe 2:
+	The teacher is Juan Ignacio Palet
+Frecuencia:
+	He always Gets up early
+	He cooks everyday
+Free Time:
+	He plays soccer with his children
+	He takes care of his parents

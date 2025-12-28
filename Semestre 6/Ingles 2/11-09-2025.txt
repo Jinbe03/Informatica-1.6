@@ -1,0 +1,7 @@
+As Computer Science Engineering students,
+we can expertly read and understand databases,
+and perform queries or make necessary changes.
+We have to respect data privacy policies.
+We have to ensure data integrity at all times.
+We don't have to modify data that is already correct.
+We can’t ignore security vulnerabilities in the system

@@ -1,0 +1,256 @@
+Control sobre los Recursos TI
+----->
+
+IaaS (Infraestructura como servicio)
+
+
+PaaS (Plataforma como servicio)
+
+
+Saas (Software como servicio)
+
+<------
+Menos control sobre los recursos de TI
+
+Cambian sus gastos de capital por gastos variables
+
+___________________________________________________________________________________________
+
+Capital:
+	Inversión en centros de datos según las previsiones
+
+**Pague solo por la cantidad consumida**
+
+___________________________________________________________________________________________
+
+Economías de escala masivas
+
+Debido al uso acumulado por parte de todos los clientes ,AWS puede lograr mayores economías ade escala y transferir
+
+___________________________________________________________________________________________
+
+Evita asumir estimulaciones sobre capacidad
+
+cuidar el calor?
+Capacidad del servidor sobrestimada
+Capacidad del servidor subestimada
+Ajustes de escala bajo demanda 
+	⬆️demanda de aplicaciones/instancias en ejecución | ➡️ tiempo
+___________________________________________________________________________________________
+aumentar la velocidad y agilidad
+Semanas entre la obtención de recursos (ya)
+___________________________________________________________________________________________
+Dejar de gastar dinero en la ejecución y el mantenimiento de centros de datos
+Ejecución de centro de datos
+
+___________________________________________________________________________________________
+Adquirir escala mundial en cuestión de minutos
+cosas sus
+___________________________________________________________________________________________
+
+Sección 3 : Introducción amazon web service
+*Cambiar sus gastos de capital por gastos variables
+*Beneficiarse de las grandes economías de escala
+*Evitar asumir estimaciones sobre capacidad
+*Aumentar la velocidad y la agilidad
+*Dejar de gastar dinero en la ejecución y el mantenimiento de centros de datos
+*Adquirir escala mundial en cuestión de minutos
+
+___________________________________________________________________________________________
+Que es AWS?
+*AWS es una plataforma en la nube segura que ofrece un amplio conjunto de productos globales basados en la nube
+*AWS le proporciona acceso bajo demanda a recursos informáticos, de almacenamiento, de red, de base de datos y otros recursos de TI y herramientas de administración.
+*AWS ofrece flexibilidad
+*Solo paga por los servicios individuales que necesita, en la medida en que los utilice.
+*Los servicios de AWS trabajan en conjunto como piezas fundamentales
+___________________________________________________________________________________________
+Sección 3
+*AWS es una plataforma en la nube segura que ofrece un amplio conjunto de productos globales basados en la nube denominados servicios, que están diseñados para trabajar juntos
+*Existen muchas categorías de servicios de AWS y cada categoría tiene, a su vez, muchos servicios entre los cuales elegir.
+*Elija un servicio en función de sus objetivos empresariales y requisitos tecnológicos
+*Existen tres formas de interactuar con los servicios de AWS
+___________________________________________________________________________________________
+Sección 4: Migración a la nube de AWS - Marco de adopción de la nube de AWS (CAF de AWS)
+Modulo 1: Información general sobre los conceptos de la nube
+___________________________________________________________________________________________
+
+Marco de Adopción en la nube de AWS (CAF de AWS)
+*El CAF de AWS ofrece orientación y practicas recomendadas a fin de ayudar al as organizaciones a crear un enfoque integral para la información en la nube, en toda la organización uy durante todo el ciclo de vida de la TI, ara acelerar la adopción satisfactoria de la nube.
+*El CAF de AWS esta organizado en seis perspectivas
+*Las perspectivas se componen de conjuntos de capacidades
+
+Perspectivas: 
+
+Se enfoca en las capacidades empresariales
+	-Negocio
+	-Gente
+	-Gobernanza
+
+Se enfoca en las capacidades Técnicas
+	-Plataforma
+	-Seguridad
+	-Operaciones
+
+
+Negocio:
+	-Finanzas de TI
+	-Estrategia de TI
+	-Realización de beneficios
+	-Administración de riesgos empresariales
+Capacidad de perspectiva de los negocios
+
+*Es necesario garantizar que la TI este en consonancia con las necesidades empresariales y que las inversiones de TI se puedas rastrar para obtener resultados comerciales demostrables.
+	(Gerentes comerciales, directores de finanzas, responsables del presupuesto y partes interesadas en la estrategia)
+
+Gente:
+	-Administración de recursos
+	-Administración de los incentivos
+	-Administración de la carrera profesional
+	-Administración de la técnica
+
+Gobernanza:
+	-Administración de portafolios
+	-Administración de proyectos y programas
+	-Medición del rendimiento empresarial
+	-Administración de licencias
+Capacidades de perspectiva de la gobernanza
+
+*Es necesario garantizar que las habilidades y los procesos ajusten la estrategia y los objetivos de la TI con la estrategia y los objetivos empresariales para que la
+organización pueda maximizar el calor de negocio de su inversión TI y minimizar los riesgos comerciales. 
+	(Directores de información, directores de programas,
+	arquitectos empresariales, analistas de negocios y administradores de portafolios)
+
+Plataforma:
+	-Aprovisionamiento de informática
+	-Aprovisionamiento de red
+	-Aprovisionamiento de almacenamiento
+	-Aprovisionamiento de bases de datos
+	-sistemas y soluciones
+	-Desarrollo de aplicaciones
+
+Seguridad:
+	-Administración de identidad y acceso
+	-Control de detección
+	-Seguridad de la infraestructura
+	-Protección de datos
+	-Respuesta de incidentes
+Capacidades de perspectivas de la seguridad
+
+Es necesario garantizar que la organización cumpla sus objetivos de seguridad
+	(Director de seguridad de la información, administradores de seguridad de TI y analistas de seguridad de TI)
+
+Operaciones:
+	-Monitoreo de servicios
+	-Monitoreo de la aplicación
+	-Administración de versiones/administración de cambios
+
+___________________________________________________________________________________________
+
+Aprendizajes clave de la sección 4
+
+*La adopción de la nube no es instantánea para la mayoría de organizaciones y requiere una estrategia y deliberadas en toda la organización
+*El CAF de AWS se creo a fin de ayudar a las organizaciones
+
+___________________________________________________________________________________________
+
+Dejar ed gastar dinero en la ejecución y el mantenimiento de centros de datos
+Ejecución de centros de datos <Inversión>
+___________________________________________________________________________________________
+
+Pague solo lo que usa
+Solo paga por los servicios que utiliza, sin grandes gastos iniciales
+
+Pague menos al reservar:
+Invierta en instancias reservadas (RI)
+	Ahorre hasta un 75%
+	Opciones
+		Las instancias reservadas con pago total anticipado(AURI)-> mayor descuento
+		Las instancias reservadas con pago parcial anticipado (PURI)-> Descuentos mas bajos
+		Las instancias reservadas sin pago anticipado (NURI)-> descuento aun menores
+___________________________________________________________________________________________
+
+Paga menos usando mas
+Obtenga descuento por volumen
+	Ahorros a medida que aumenta el uso
+	Los precios por niveles para servicios como Amazon simple storage service (AmazonS3),
+	amazon elastick block(Amazon EBS) o Amanzon Elastic File system (Amazon EFS)->
+	cuanto mas use menos pagara por GB.
+	Varios servicios de almacenamiento que porporcionan menores gastos segun las necesidades
+___________________________________________________________________________________________
+Paga aun menos a medida que crece AWS
+
+A medida que crece AWS:
+	AWS se enfoca en reducir los costos de los negocios
+	Esta practica hace que AWS traspase loa ahorros ed las economias
+	
+___________________________________________________________________________________________
+
+Precios personalizados
+	Satisfaga distintas necesidades mediante los precios personalizados
+	Se encuentran disponibles para proyectos de gran volumen con requistos
+___________________________________________________________________________________________
+Nivel gratuito de AWS
+Permite obtener experiencia practica gratuita con los productos, los servicios y la plataforma de AWS
+gratis durante un año para nuevos clientes
+___________________________________________________________________________________________
+Servicios sin cargo
+
+	Amazon VPC
+	Elastic Beanstalk
+	Escalado Automatico
+	AWS CloudFormation
+	AWS Identify and Acces Management (AWS IAM)
+___________________________________________________________________________________________
+Conclusiones Importantes
+
+No tiene cargo (con algunas excepciones.....)
+___________________________________________________________________________________________
+En las instalaciones frente a la nube
+
+Infraestructura tradicional:
+	Equipo
+	Recursos y administracion
+	Contratos
+	Optimizacion
+
+Nube de AWS:
+	Sin gastos iniciales: pague por lo que usa
+	Mejorar el tiempo de comercializacion y la agilidad
+	reduccion de escalado vertical
+	Infraestructura de autoservicio
+___________________________________________________________________________________________
+¿Que es el costo total de propiedad (TCO)?
+El costo total dep ropiedad es la estimacion financiera que ayuda a
+identificar los costos directos e indirectos del sistema
+___________________________________________________________________________________________
+
+Consideraciones sobre el TCO
+1 Costo de servidores: Harddware, Software
+2 Costos de almacenamiento: Hardware, costos de administracon de almacenamiento
+3 Costos de red: Hardware, Costos de almacenamiento de red
+___________________________________________________________________________________________
+Calculadora de precios de AWS
+Utilice la calculadora de precios de AWS para
+	-Calcular los costos mensuales
+	-Identificar oprotunidades para reducir los costos mensuales
+	-Modele sus soluciones antes de construirlas
+	-Explore los puntos de precio y los calculos por debajo de sus estimaciones
+	-Encuentre los tipos de instancia disponibles y las condiciones contractuales que se
+	 ajustan a sus necesidades
+	-Nombre su presupuesto y cree y nombre grupos de servicio.
+___________________________________________________________________________________________
+Configuracion de organizaciones
+paso 1	Crear una organizacion
+paso 2	Crear unidades organizativas
+paso 3	Crear politicas de control de servicios
+paso 4 	crear control de pruebas
+___________________________________________________________________________________________
+Planes de soporte
+AWS supporte ofrece 4 planes
+	-Basic support: acceso al centro de recursos, service healt dashboard, las preguntas
+			frecuentes sobre productos, los fotos de discusion y el soporte para
+			comprobar el estado
+	-Developer support: Soporte para el desarrollo inicial de AWS
+	-Business Support: soporte para clientes que ejecutan cargas de trabajo -
+	-
+___________________________________________________________________________________________

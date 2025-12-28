@@ -1,0 +1,197 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mantenedor de Calificaciones Tributarias - Nuam</title>
+  <!-- Bootstrap desde CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS local desde static -->
+  <link rel="stylesheet" href="{% static 'calificaciones/style.css' %}">
+  <!-- jsPDF desde CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar app-header py-2">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold">Nuam — Mantenedor de Calificaciones</a>
+      <div class="d-flex align-items-center">
+        <div id="loggedUserDisplay" class="me-3 small-muted"></div>
+        <div>
+          <select id="roleSelect" class="form-select form-select-sm" style="width:auto;">
+            <option value="corredor">Corredor</option>
+            <option value="admin">Administrador</option>
+            <option value="auditor">Auditor externo</option>
+          </select>
+        </div>
+        <button id="btnLogout" class="btn btn-outline-light btn-sm ms-2">Cerrar sesión</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <div class="row g-3 align-items-center mb-3">
+      <div class="col-md-8">
+        <div class="input-group">
+          <input id="searchInput" type="text" class="form-control" placeholder="Buscar empresa, periodo o tipo..." />
+          <button id="btnSearch" class="btn btn-primary">Buscar</button>
+          <button id="btnReset" class="btn btn-outline-secondary">Reset</button>
+        </div>
+      </div>
+      <div class="col-md-4 text-end">
+        <label class="btn btn-success btn-sm me-1">
+          <input id="csvFileInput" type="file" accept=".csv" class="csv-input" />
+          <span class="d-inline-block">📥 Carga masiva (CSV)</span>
+        </label>
+        <button id="btnExportCSV" class="btn btn-outline-primary btn-sm">📤 Exportar CSV</button>
+        <button id="btnExportPDF" class="btn btn-outline-secondary btn-sm">📄 Exportar PDF</button>
+        <button id="btnNew" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#modalForm">+ Nueva Calificación</button>
+      </div>
+    </div>
+
+    <div class="card card-body card-shadow">
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label class="form-label small-muted">Filtrar por periodo</label>
+          <input id="filterPeriodo" type="month" class="form-control form-control-sm" />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label small-muted">Filtrar por tipo</label>
+          <select id="filterTipo" class="form-select form-select-sm">
+            <option value="">Todos</option>
+            <option value="IVA">IVA</option>
+            <option value="Renta">Renta</option>
+            <option value="IVA-Renta">IVA-Renta</option>
+          </select>
+        </div>
+        <div class="col-md-6 text-end align-self-end">
+          <span id="dataCount" class="small-muted"></span>
+        </div>
+      </div>
+
+      <div class="table-responsive" style="max-height: 55vh; overflow:auto;">
+        <table id="tblCalificaciones" class="table table-striped table-hover table-fixed align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Empresa</th>
+              <th>Periodo</th>
+              <th>Tipo</th>
+              <th>Calificación</th>
+              <th>Fuente / Archivo</th>
+              <th>Última mod.</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tblBody">
+            {% for calif in calificaciones %}
+            <tr>
+              <td>{{ calif.empresa }}</td>
+              <td>{{ calif.periodo }}</td>
+              <td>{{ calif.tipo }}</td>
+              <td>{{ calif.calificacion }}</td>
+              <td>{{ calif.fuente }}</td>
+              <td>{{ calif.created_at }}</td>
+              <td class="text-end">
+                <!-- Aquí puedes poner botones de editar/eliminar -->
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="accordion mt-3" id="accordionAudit">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAudit">
+            Registro de Auditoría
+          </button>
+        </h2>
+        <div id="collapseAudit" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <div id="auditList" class="small-muted" style="max-height:200px;overflow:auto"></div>
+            <div class="mt-2 text-end">
+              <button id="btnClearAudit" class="btn btn-sm btn-outline-danger">Limpiar registro</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal de crear calificación -->
+  <div class="modal fade" id="modalForm" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <form id="califForm" method="POST" action="{% url 'guardar_calificacion' %}" class="needs-validation" novalidate>
+          {% csrf_token %}
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Nueva Calificación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input id="califId" type="hidden" />
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Empresa <span class="required">*</span></label>
+                <input name="empresa" id="empresa" class="form-control" required />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Periodo <span class="required">*</span></label>
+                <input name="periodo" id="periodo" type="month" class="form-control" required />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Tipo <span class="required">*</span></label>
+                <select name="tipo" id="tipo" class="form-select" required>
+                  <option value="">Seleccionar</option>
+                  <option>IVA</option>
+                  <option>Renta</option>
+                  <option>IVA-Renta</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Calificación <span class="required">*</span></label>
+                <input name="calificacion" id="calificacion" class="form-control" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Fuente / Archivo</label>
+                <input name="fuente" id="fuente" class="form-control" />
+              </div>
+              <div class="col-12">
+                <label class="form-label">Observaciones</label>
+                <textarea name="observaciones" id="observaciones" class="form-control" rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button id="saveBtn" type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmar eliminación -->
+  <div class="modal fade" id="modalConfirm" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center p-4">
+          <p>¿Seguro que quieres eliminar esta calificación?</p>
+          <button id="confirmDeleteBtn" class="btn btn-danger btn-sm">Sí, eliminar</button>
+          <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Proyecto NUAM.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'calificaciones/script.js' %}"></script>
+</body>
+</html>

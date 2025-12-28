@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calificaciones PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th {
+            background-color: #f2f2f2;
+            padding: 6px;
+            text-align: left;
+        }
+        td {
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calificaciones Tributarias</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Periodo</th>
+                <th>Tipo</th>
+                <th>Calificación</th>
+                <th>Fuente / Archivo</th>
+                <th>Fecha Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in calificaciones %}
+            <tr>
+                <td>{{ c.empresa }}</td>
+                <td>{{ c.periodo }}</td>
+                <td>{{ c.tipo }}</td>
+                <td>{{ c.calificacion }}</td>
+                <td>{{ c.fuente }}</td>
+                <td>{{ c.created_at|date:"d/m/Y H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" style="text-align:center;">No hay registros</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="text-align:right; font-size:10px;">
+        Generado el {{ now|date:"d/m/Y H:i" }}
+    </p>
+</body>
+</html>

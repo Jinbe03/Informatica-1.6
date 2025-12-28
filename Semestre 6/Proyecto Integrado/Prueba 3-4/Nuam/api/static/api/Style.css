@@ -1,0 +1,282 @@
+/* ==================== BASE ==================== */
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f4f6f9;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    color: #2f3a4a;
+}
+
+main {
+    flex: 1;
+}
+
+/* ==================== HEADER / NAVBAR ==================== */
+.app-header {
+    background: #1f3a5a; 
+    color: white;
+    border-bottom: 3px solid #2d4f73;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: .5px;
+}
+
+/* ==================== BOTONES ==================== */
+.btn {
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background: #245d8c;
+    border-color: #245d8c;
+    color: white;
+}
+.btn-primary:hover {
+    background: #1d4d73;
+    border-color: #1d4d73;
+}
+
+.btn-success {
+    background: #2f855a;
+    border-color: #2f855a;
+    color: white;
+}
+.btn-success:hover {
+    background: #276749;
+}
+
+.btn-warning {
+    background: #d6a034;
+    border-color: #d6a034;
+    color: white;
+}
+.btn-warning:hover {
+    background: #b8852d;
+}
+
+.btn-danger {
+    background: #c53030;
+    border-color: #c53030;
+    color: white;
+}
+.btn-danger:hover {
+    background: #9b2c2c;
+}
+
+.btn-info {
+    background: #3182ce;
+    border-color: #3182ce;
+    color: white;
+}
+.btn-info:hover {
+    background: #2b6cb0;
+}
+
+.btn-outline-light {
+    color: #e2e8f0;
+    border-color: #e2e8f0;
+}
+.btn-outline-light:hover {
+    background-color: #e2e8f0;
+    color: #1f3a5a;
+}
+
+.btn-outline-secondary {
+    border-color: #cbd5e0;
+    color: #2f3a4a;
+}
+.btn-outline-secondary:hover {
+    background: #e2e8f0;
+}
+
+/* ==================== INPUTS / SELECTS / TEXTAREA ==================== */
+input, select, textarea {
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e0 !important;
+    background: #ffffff !important;
+    padding: 6px 12px;
+}
+
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(36, 93, 140, 0.25);
+    border-color: #245d8c !important;
+}
+
+/* ==================== CARDS ==================== */
+.card, .card-body {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e1e5eb;
+}
+
+.card-shadow {
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+
+/* ==================== TABLAS ==================== */
+.table thead {
+    font-weight: 600;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #f7f9fc;
+}
+
+.table-hover tbody tr:hover {
+    background: #e8eff7;
+}
+
+.table td, .table th {
+    padding: 12px;
+}
+
+.table-fixed thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table-dark th {
+    background: #2d4f73 !important;
+    color: #ffffff !important;
+}
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ==================== BADGES ==================== */
+.badge {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: .75rem;
+}
+
+.badge-success { background: #2f855a; }
+.badge-warning { background: #d6a034; }
+.badge-danger  { background: #c53030; }
+.badge-info    { background: #3182ce; }
+
+/* ==================== MODALES ==================== */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-header {
+    background: #1f3a5a;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-footer .btn {
+    border-radius: 6px;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+    background: #1f3a5a;
+    color: #cbd5e0;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: .9rem;
+}
+
+/* ==================== INPUT FILE ==================== */
+.csv-input {
+    display: none;
+}
+
+/* ==================== CARD FILTRO ==================== */
+.card-filtro {
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    margin-bottom: 1rem;
+}
+
+/* ==================== LABELS ==================== */
+label.form-label {
+    font-weight: 500;
+    font-size: .875rem;
+    margin-bottom: .25rem;
+    color: #2f3a4a;
+    display: block;
+}
+
+/* ==================== REGISTRO ACTIVIDAD ==================== */
+#auditoria-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==================== FLEX UTILS ==================== */
+.d-flex.gap-2 {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.d-flex.gap-2 > * {
+    flex: 1;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 992px) {
+    .d-flex.gap-2 {
+        flex-direction: column;
+    }
+
+    .d-flex.gap-2 > * {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .btn {
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .table-responsive {
+        border-radius: 10px;
+    }
+}
+
+
+/* BOTÓN DESBLOQUEAR — ESTILO NUAM CON BORDE DESTACADO */
+.btn-desbloquear {
+    background: #1f3a5a; /* azul oscuro */
+    border: 2px solid #d6a034; /* borde dorado destacado */
+    color: #ffffff; /* texto blanco visible */
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.25s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-desbloquear:hover {
+    background: #245d8c; /* azul más claro */
+    border-color: #ffbf47; /* dorado más brillante */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
